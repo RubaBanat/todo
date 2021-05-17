@@ -1,20 +1,10 @@
-import React, { useState } from 'react';
 import { Button ,Form } from 'react-bootstrap';
+import useForm from '../hooks/formHooks';
 
 const TodoForm = (props) => {
-  const [item, setItem] = useState({})
+  // eslint-disable-next-line no-unused-vars
+  const [item , handleInputChange , handleSubmit] = useForm(props)
 
-  const handleInputChange = (e) => {
-    setItem({...item , [e.target.name]: e.target.value })
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    props.handleSubmit(item);
-    const items = {};
-    setItem({ items });
-  };
 
   return (
     <>
