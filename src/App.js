@@ -1,13 +1,18 @@
 import React from 'react';
-import ToDo from './components/todo/todo.js';
-import NavBar from './components/todo/navigation'
+import ToDo from './components/todo/todo';
+import NavBar from './components/todo/navigation';
+
+import SettingProvider from './components/context/setting';
 
 const App = () => (
-    <>
-        < NavBar />
-        <ToDo />;
-    </>
-)
+	<>
+		<NavBar />
+	
+		<SettingProvider>
+			<ToDo />
+		</SettingProvider>
 
+	</>
+);
 
 export default App;

@@ -5,11 +5,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ---
 ## UML Diagram 
 
-![uml](assets/uml6.png)
+![uml](assets/uml7.png)
 
 ---
 
-## [PR-Link](https://github.com/RubaBanat/todo/pull/3)
+## [PR-Link](https://github.com/RubaBanat/todo/pull/4)
 
 
 ## [Deploy-Link](https://my-todo-list1.netlify.app/)
