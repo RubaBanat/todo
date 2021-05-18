@@ -13,7 +13,7 @@ const ToDo = () => {
 
   const fetch = useAjax(todoAPI);
     const settingContext = useContext(SettingContext)
-
+  // eslint-disable-next-line 
     useEffect(fetch, []);
 
   useEffect(() => {
