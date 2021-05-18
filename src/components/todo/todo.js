@@ -42,8 +42,7 @@ const ToDo = () => {
 					padding: '1rem 1rem 0.2rem 2rem',
           borderRadius: '20px',
           color :'#fff'
-				}}
-			>
+				}}>
 				<div key={`inline-radio`} className="mb-3">
 					<Form.Check
 						inline
