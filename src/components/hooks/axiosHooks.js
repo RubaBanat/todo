@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {SettingContext} from '../context/setting'
 import {useContext} from 'react';
+import { LoginContext } from './../auth/setting';
 
 
 
@@ -8,6 +9,8 @@ import {useContext} from 'react';
 const useAjax = (url) => {
 
 	const settingContext = useContext(SettingContext)
+	const loginContext = useContext(LoginContext);
+
 	let config = {
 		headers: {
 			mode: 'cors',
@@ -23,13 +26,21 @@ const useAjax = (url) => {
 			settingContext.setList([...results.data.results]);
 		}
 
-		if (method === 'post') {
+		if (
+			method === 'post' &&
+			(loginContext.user.user.type === 'admin' ||
+				loginContext.user.user.type === 'editor')
+		) {
 			item.due = new Date();
 			const results = await axios[method](url, item, config);
 			settingContext.setItems([...settingContext.items, results.data]);
 		}
 
-		if (method === 'put') {
+		if (
+			method === 'put' &&
+			(loginContext.user.user.type === 'admin' ||
+				loginContext.user.user.type === 'editor')
+		) {
 			let item = settingContext.items.filter((i) => i._id === id)[0] || {};
 
 			if (item._id) {
@@ -43,7 +54,7 @@ const useAjax = (url) => {
 			}
 		}
 
-		if (method === 'delete') {
+		if (method === 'delete' && loginContext.user.user.type === 'admin') {
 			let item = settingContext.items.find((i) => i._id === id) || {};
 
 			if (item._id) {
