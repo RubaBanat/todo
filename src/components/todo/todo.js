@@ -11,10 +11,10 @@ const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
 
 const ToDo = () => {
 
-	const fetch = useAjax(todoAPI);
+	const fetchingData  = useAjax(todoAPI);
 	const settingContext = useContext(SettingContext)
 	// eslint-disable-next-line 
-	useEffect(fetch, []);
+	useEffect(fetchingData , []);
 
 	useEffect(() => {
 		document.title =
@@ -79,14 +79,14 @@ const ToDo = () => {
 					<Card style={{ width: '18rem', height: '30%' }}>
 						<Card.Body>
 							<Card.Text>
-								<Col><TodoForm handleSubmit={fetch} /></Col>
+								<Col><TodoForm handleSubmit={fetchingData } /></Col>
 							</Card.Text>
 						</Card.Body>
 					</Card>
 
 					<Col sm={4} md={{ span: 4, offset: 1 }}> <TodoList
 						list={settingContext.items}
-						handleComplete={fetch} handleDelete={fetch} />
+						handleComplete={fetchingData } handleDelete={fetchingData } />
 						<Pagination style={{ marginTop: '15%', marginLeft: '40%' }}>
 							<Pagination.Prev
 								// disabled={!settingContext.disable}
