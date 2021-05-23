@@ -28,8 +28,7 @@ const useAjax = (url) => {
 
 		if (
 			method === 'post' &&
-			(loginContext.user.user.type === 'admin' ||
-				loginContext.user.user.type === 'editor')
+			loginContext.user.user.capabilities.includes('create')
 		) {
 			item.due = new Date();
 			const results = await axios[method](url, item, config);
@@ -38,8 +37,7 @@ const useAjax = (url) => {
 
 		if (
 			method === 'put' &&
-			(loginContext.user.user.type === 'admin' ||
-				loginContext.user.user.type === 'editor')
+			loginContext.user.user.capabilities.includes('update')
 		) {
 			let item = settingContext.items.filter((i) => i._id === id)[0] || {};
 
@@ -54,7 +52,10 @@ const useAjax = (url) => {
 			}
 		}
 
-		if (method === 'delete' && loginContext.user.user.type === 'admin') {
+		if (
+			method === 'delete' &&
+			loginContext.user.user.capabilities.includes('delete')
+		) {
 			let item = settingContext.items.find((i) => i._id === id) || {};
 
 			if (item._id) {
@@ -66,8 +67,7 @@ const useAjax = (url) => {
 				);
 			}
 		}
-	};
-
+	}
 	return fetchingData;
 };
 
